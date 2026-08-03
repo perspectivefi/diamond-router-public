@@ -1,0 +1,23 @@
+[profile.default]
+src = 'src'
+out = 'out'
+libs = ["dependencies"] 
+fuzz_runs = 256
+
+fs_permissions = [
+    { access = "read", path = "./dependencies/spectra-contracts-configs-main/global/" },
+    { access = "read", path = "./script/constants/" },
+    { access = "write", path = "./script/output/" },
+    { access = "read-write", path = "./test/"}]
+
+[rpc_endpoints]
+mainnet = "${MAINNET_RPC_URL}"
+
+
+[dependencies]
+"@openzeppelin-contracts-upgradeable" = "5.4.0-rc.1"
+"@openzeppelin-contracts" = "5.4.0-rc.1"
+forge-std = "1.9.7"
+spectra-contracts-configs = { version = "main", git = "git@github.com:perspectivefi/spectra-contracts-configs.git", branch = "main" }
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
